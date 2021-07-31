@@ -12,7 +12,7 @@ export default function Content() {
     return (
         <div className="flex flex-row justify-between items-center" style={{ padding: "10px 10px" }}>
             <div>
-                <div style={{fontSize:'20px', fontWeight:'bold'}}>{selectedRoom===undefined?'':selectedRoom.name}</div>
+                <div style={{fontSize:'18px', fontWeight:'bold'}}>{selectedRoom===undefined?'Please choose a room':selectedRoom.name}</div>
                 <div>{selectedRoom===undefined?'':selectedRoom.description}</div>
             </div>
             <button onClick={showModelInvite} className="bg-transparent font-semibold py-2 px-4 hover:border-transparent" style={{ width: '70px', borderRadius: '50px' }}>

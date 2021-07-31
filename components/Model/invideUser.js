@@ -1,21 +1,7 @@
 import React, {useState} from 'react'
 import { AppContext } from '../../Context/AppProvider';
 import { AuthContext } from '../../Context/context';
-
-function DebounceSelected({fetchOptions, debounceTimeout=300, ...props}){
-    const [fetching, setfetching] = useState(false);
-    const [option, setOption] = useState([]);
-    const debounceFetcher = React.useMemo(()=>{
-        const loadOption = (value)=>{
-            setOption([]);
-            setfetching(true);
-            fetchOptions(value).then(newOption =>{
-                setOption(newOption);
-                setfetching(false);
-            })
-        }
-    },[])
-}
+import {debounce} from 'lodash'
 export default function InvideUser() {
     const {visibleInvite, setvisibleInvite} = React.useContext(AppContext)
     const user = React.useContext(AuthContext)
