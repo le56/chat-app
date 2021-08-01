@@ -25,7 +25,7 @@ export default function Messgase() {
     }
     React.useEffect(
         () => {
-            db.collection('messages').onSnapshot((snapshot) => {
+            db.collection('messages').orderBy('createdAt').where('RoomId','==',RoomId).onSnapshot((snapshot) => {
                 const document = snapshot.docs.map(doc => (
                     {
                         ...doc.data(),
@@ -35,18 +35,14 @@ export default function Messgase() {
                 setMessage(document);
             })
         }
-        , [])
-    let mess = message.filter((item)=>{
-        return item.RoomId === RoomId
-    })
+        , [RoomId])
     function showMessage(){
-        return mess.map((message,index)=>{
+        return message.map((message,index)=>{
             return(
                 <MessagesItem message={message} key={index}></MessagesItem>
             )
         })
     }
-    console.log(RoomId)
     return (
         <div className="flex flex-col justify-end" style={{ height: '100%', width: '100%' }}>
             <div style={{ overflowY: 'scroll', height: '75vh' }} className="flex flex-col justify-end">
