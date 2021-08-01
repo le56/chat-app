@@ -3,8 +3,8 @@ import { AuthContext } from '../Context/context';
 import { AppContext } from '../Context/AppProvider';
 import { addDocument } from '../Firebase/service';
 import MessagesItem from './Messages-item'
-import useFirestore from './../hook/useFirestore'
 import { db } from "../Firebase/Config";
+import Image from 'next/image';
 export default function Messgase() {
     const { RoomId } = React.useContext(AppContext);
     const user = React.useContext(AuthContext);
@@ -45,7 +45,7 @@ export default function Messgase() {
     }
     return (
         <div className="flex flex-col justify-end" style={{ height: '100%', width: '100%' }}>
-            <div style={{ overflowY: 'scroll', height: '75vh' }} className="flex flex-col justify-end">
+            <div style={{ overflowY: 'scroll', height: '74vh' }} className="flex flex-col justify-end">
                {RoomId==null?'':showMessage()}
             </div>
             <div className="flex flex-row" style={{ margin: '5px 5px', width: '80%' }}>
@@ -57,7 +57,7 @@ export default function Messgase() {
                         type="text" placeholder="Enter a message" className="block p-4 w-full text-lg appearance-none focus:outline-none bg-transparent" style={{ height: '40px' }} />
                 </div>
                 <button onClick={handleOnSubmit} className="" style={{ width: '70px', borderRadius: '50px' }}>
-                    <img style={{ height: '20px', width: '20px', marginLeft: '20px' }} src="https://www.searchpng.com/wp-content/uploads/2019/02/Send-Icon-PNG-715x657.png"></img>
+                    <Image height='20px' width='20px' style={{ marginLeft: '20px' }} src="https://www.searchpng.com/wp-content/uploads/2019/02/Send-Icon-PNG-715x657.png"/>
                 </button>
             </div>
         </div>
